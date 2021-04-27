@@ -70,7 +70,8 @@ func (w *HTTPClient) Do(q *query.HTTP, opts *HTTPClientDoOptions) (lag float64, 
 	}
 
 	// populate a request with data from the Query:
-	req, err := http.NewRequest(string(q.Method), string(w.uri), nil)
+	strUrl := fmt.Sprintf("%s&u=admin&p=1qaz2wsx", string(w.uri));
+	req, err := http.NewRequest(string(q.Method), strUrl, nil)
 	if err != nil {
 		panic(err)
 	}
